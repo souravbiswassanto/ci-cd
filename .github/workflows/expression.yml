@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: hi
         env:
-          hi: ${{ false && hello || world }}
+          hi: ${{ false && 'hello' || 'world' }}
         run: |
           echo $hi, vai
