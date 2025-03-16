@@ -12,4 +12,4 @@ jobs:
         env:
           hi: ${{ false && hello || world }}
         run: |
-          echo $hi
+          echo $hi, vai
