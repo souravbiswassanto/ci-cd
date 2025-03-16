@@ -1,0 +1,20 @@
+name: functions
+on:
+  push:
+    branches:
+      - main
+jobs:
+  job-contains:
+    name: contains
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 1
+        env:
+          my_array: '["apple", "Potato"]'
+          exists: 'Potato'
+        run: |
+          if [[ ${{ contains(fromJSON(env.my_array), env.exists) }} == true ]];then
+              echo "contains";
+          else
+              echo "not"
+          fi
