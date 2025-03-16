@@ -1,0 +1,27 @@
+name: Continue Dependent Jobs On Parent Failure
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  job1:
+    name: a
+    runs-on: ubuntu-latest
+    steps:
+      - id: a
+        run: echo "hello world"
+  job2:
+    needs: job1
+    name: b
+    runs-on: ubuntu-latest
+    steps:
+      - id: b
+        run: echo "hello world"
+  job3:
+    if: ${{ always() }}
+    needs: [job1, job2]
+    name: c
+    runs-on: ubuntu-latest
+    steps:
+      - id: c
+        run: echo "hello world"

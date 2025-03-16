@@ -1,0 +1,15 @@
+name: ternary check
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    name: demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: hi
+        env:
+          hi: ${{ false && hello || world }}
+        run: |
+          echo $hi
