@@ -1,0 +1,22 @@
+name: Job Output
+on:
+  push:
+    branches:
+      - main
+jobs:
+  job1:
+    name: Set Output
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.id1.outputs.demo }}
+    steps:
+      - id: id1
+        run: echo "demo=neo" >> $GITHUB_OUTPUT
+  job2:
+    name: Use other job output
+    needs: job1
+    runs-on: ubuntu-latest
+    env:
+      demo: ${{ needs.job1.outputs.output1 }}
+    steps:
+      - run: echo $demo
