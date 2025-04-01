@@ -1,0 +1,16 @@
+name: concurrency check
+on:
+  push:
+    branches:
+      - main
+jobs:
+  job1:
+    concurrency:
+      group: abc
+      cancel-in-progress: true
+    name: a
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sleep 10
+          echo "abc"
