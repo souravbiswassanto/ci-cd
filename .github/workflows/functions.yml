@@ -2,7 +2,7 @@ name: functions
 on:
   push:
     branches:
-      - main
+      - no-branch
 jobs:
   job-contains:
     name: contains

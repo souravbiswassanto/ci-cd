@@ -2,7 +2,7 @@ name: ternary check
 on:
   push:
     branches:
-      - main
+      - no-branch
 jobs:
   test:
     name: demo

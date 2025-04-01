@@ -1,15 +1,16 @@
-name: concurrency check
+name: defaults
 on:
   push:
     branches:
-      - no-branch
+      - main
 jobs:
   job1:
-    concurrency:
-      group: abc
-      cancel-in-progress: true
     name: a
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        # working-directory: ./scripts
     steps:
       - run: |
           sleep 10

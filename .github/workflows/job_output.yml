@@ -2,7 +2,7 @@ name: Job Output
 on:
   push:
     branches:
-      - main
+      - no-branch
 jobs:
   job1:
     name: Set Output
